@@ -1,6 +1,3 @@
-function afficherMessage() {
-    return "Bonjour les étudiants !";
+function sayHello() {
+    const message = ;
 }
-
-document.getElementById("message").textContent =
-    afficherMessage();
