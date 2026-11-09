@@ -1,0 +1,38 @@
+name: CI - Demo HTML JavaScript
+
+# Déclenchement du workflow
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Les tâches à exécuter
+jobs:
+  verification:
+
+    # Machine virtuelle utilisée
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code source
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+
+      # 2. Installer Node.js
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 3. Vérifier la syntaxe JavaScript
+      - name: Verifier JavaScript
+        run: node --check script.js
+
+      # 4. Vérifier la présence du fichier HTML
+      - name: Verifier HTML
+        run: test -f index.html
+
+      # 5. Afficher un message
+      - name: Fin de verification
+        run: echo "Toutes les verifications sont réussies !"
